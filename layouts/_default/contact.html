@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="contact-layout container">
+  <header class="contact-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+  </header>
+
+  <div class="contact-body">
+    <div class="contact-intro">
+      {{- with .Content }}
+      <div class="prose">{{ . }}</div>
+      {{- end }}
+
+      {{- with .Site.Params.email }}
+      <a href="mailto:{{ . }}" class="contact-email-link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/>
+        </svg>
+        {{ . }}
+      </a>
+      {{- end }}
+    </div>
+
+    <div class="contact-social">
+      <p class="contact-social-label">Find me online</p>
+      {{ partial "social-icons.html" . }}
+    </div>
+  </div>
+</div>
+{{ end }}

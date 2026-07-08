@@ -1,19 +1,6 @@
 <footer class="site-footer">
   <div class="container">
     <p class="footer-copy">© {{ now.Year }} {{ .Site.Params.author | default .Site.Title }}</p>
-    <nav class="footer-social" aria-label="Social links">
-      {{ with .Site.Params.social.instagram }}
-        <a href="{{ . }}" target="_blank" rel="noopener noreferrer">Instagram</a>
-      {{ end }}
-      {{ with .Site.Params.social.behance }}
-        <a href="{{ . }}" target="_blank" rel="noopener noreferrer">Behance</a>
-      {{ end }}
-      {{ with .Site.Params.social.linkedin }}
-        <a href="{{ . }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      {{ end }}
-      {{ with .Site.Params.email }}
-        <a href="mailto:{{ . }}">Email</a>
-      {{ end }}
-    </nav>
+    {{ partial "social-icons.html" . }}
   </div>
 </footer>
