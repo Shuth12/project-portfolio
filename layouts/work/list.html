@@ -1,21 +1,41 @@
 {{ define "main" }}
 <div class="container">
-  <section class="work-section">
+  <header class="work-intro">
     <h1 class="page-title">Work</h1>
-    <div class="work-grid">
-      {{ range .Pages }}
-      <a href="{{ .Permalink }}" class="work-card">
-        {{ with .Params.cover }}
-          <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+    <p class="work-count">{{ len .Pages }} Projects</p>
+  </header>
+
+  <div class="work-grid">
+    {{ range .Pages.ByDate.Reverse }}
+    {{ $cover := .Resources.GetMatch "cover*" }}
+    <a href="{{ .Permalink }}"
+       class="work-card{{ if .Params.flagship }} work-card--flagship{{ end }}">
+      <div class="work-card-image-wrap">
+        {{ if $cover }}
+          {{ if .Params.flagship }}
+            {{ partial "work-image.html" (dict
+              "Img"   ($cover.Fill "1000x563 webp Center")
+              "Alt"   .Title
+              "Sizes" "(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 66vw"
+            ) }}
+          {{ else }}
+            {{ partial "work-image.html" (dict
+              "Img"   ($cover.Fill "600x450 webp Center")
+              "Alt"   .Title
+              "Sizes" "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            ) }}
+          {{ end }}
         {{ end }}
+      </div>
+      <div class="work-card-info">
         <h2 class="work-card-title">{{ .Title }}</h2>
-      </a>
-      {{ else }}
-      <p style="color: var(--color-text-muted); font-family: var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; font-size: var(--text-sm);">
-        Projects coming soon.
-      </p>
-      {{ end }}
-    </div>
-  </section>
+        <p class="work-card-meta">
+          {{ with .Params.year }}{{ . }}{{ end }}
+          {{ with .Params.client }} · {{ . }}{{ end }}
+        </p>
+      </div>
+    </a>
+    {{ end }}
+  </div>
 </div>
 {{ end }}

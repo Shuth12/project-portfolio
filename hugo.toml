@@ -3,9 +3,9 @@ locale = "en-us"
 title = "Portfolio"  # Update with the designer's name
 
 [params]
-  author = ""           # Designer's name
-  description = ""      # One-line bio for meta tags
-  email = ""            # Contact email (for mailto: link)
+  author = "Shelley Cerny"           # Designer's name
+  description = "We da best"      # One-line bio for meta tags
+  email = "shelley.cerny@gmail.com"            # Contact email (for mailto: link)
 
   # Social links (platform = URL) — add/remove as needed
   [params.social]
@@ -27,10 +27,15 @@ title = "Portfolio"  # Update with the designer's name
     url    = "/contact/"
     weight = 3
 
+[taxonomies]
+  tag = "tags"
+
 [build]
   writeStats = true
 
 [outputs]
-  home = ["HTML", "RSS"]
-  page = ["HTML"]
+  home    = ["HTML", "RSS"]
+  page    = ["HTML"]
   section = ["HTML", "RSS"]
+  taxonomy = ["HTML"]
+  term     = ["HTML"]

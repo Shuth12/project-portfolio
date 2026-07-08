@@ -1,0 +1,117 @@
+{{ define "main" }}
+{{ $cover   := .Resources.GetMatch "cover*" }}
+{{ $gallery := .Resources.Match "gallery-*" }}
+
+{{/* Hero */}}
+{{ if $cover }}
+<div class="project-hero">
+  {{ partial "work-image.html" (dict
+    "Img"   ($cover.Resize "1600x webp")
+    "Alt"   .Title
+    "Sizes" "100vw"
+  ) }}
+</div>
+{{ end }}
+
+<div class="container">
+  {{/* Header */}}
+  <header class="project-header">
+    <h1 class="project-title">{{ .Title }}</h1>
+    <div class="project-meta">
+      {{ with .Params.year }}
+      <div class="project-meta-item">
+        <span class="project-meta-label">Year</span>
+        <span class="project-meta-value">{{ . }}</span>
+      </div>
+      {{ end }}
+      {{ with .Params.client }}
+      <div class="project-meta-item">
+        <span class="project-meta-label">Client</span>
+        <span class="project-meta-value">{{ . }}</span>
+      </div>
+      {{ end }}
+      {{ with .Params.role }}
+      <div class="project-meta-item">
+        <span class="project-meta-label">Role</span>
+        <span class="project-meta-value">{{ . }}</span>
+      </div>
+      {{ end }}
+    </div>
+    {{ with .Params.tags }}
+    <ul class="project-tags" aria-label="Tags">
+      {{ range . }}<li class="project-tag">{{ . }}</li>{{ end }}
+    </ul>
+    {{ end }}
+  </header>
+
+  {{/* Body */}}
+  <div class="project-body">
+
+    {{/* Case study narrative — only for flagship projects */}}
+    {{ if .Params.flagship }}
+    <div class="project-narrative">
+      {{ with .Params.challenge }}
+      <div>
+        <h2>The Challenge</h2>
+        <p>{{ . }}</p>
+      </div>
+      {{ end }}
+      {{ with .Params.solution }}
+      <div>
+        <h2>The Solution</h2>
+        <p>{{ . }}</p>
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* Body content (Markdown) */}}
+    {{ with .Content }}
+    <div class="prose">{{ . }}</div>
+    {{ end }}
+
+    {{/* Gallery */}}
+    {{ if $gallery }}
+    <div class="project-gallery">
+      {{ range $gallery }}
+      {{ partial "work-image.html" (dict
+        "Img"   .
+        "Alt"   ""
+        "Sizes" "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 800px"
+      ) }}
+      {{ end }}
+    </div>
+    {{ end }}
+
+  </div>{{/* /project-body */}}
+
+  {{/* Prev / Next */}}
+  {{ $pages := .Site.RegularPages.ByDate.Reverse }}
+  {{ $current := . }}
+  {{ range $i, $p := $pages }}
+    {{ if eq $p.Permalink $current.Permalink }}
+      {{ $prev := index $pages (sub $i 1) }}
+      {{ $next := index $pages (add $i 1) }}
+      <nav class="project-nav" aria-label="Project navigation">
+        <div>
+          {{ with $prev }}
+          <a href="{{ .Permalink }}" class="project-nav-link project-nav-link--prev">
+            <span class="project-nav-label">← Previous</span>
+            <span class="project-nav-title">{{ .Title }}</span>
+          </a>
+          {{ end }}
+        </div>
+        <div>
+          {{ with $next }}
+          <a href="{{ .Permalink }}" class="project-nav-link project-nav-link--next">
+            <span class="project-nav-label">Next →</span>
+            <span class="project-nav-title">{{ .Title }}</span>
+          </a>
+          {{ end }}
+        </div>
+      </nav>
+    {{ end }}
+  {{ end }}
+
+</div>{{/* /container */}}
+{{ end }}
