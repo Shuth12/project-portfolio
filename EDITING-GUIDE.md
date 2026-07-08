@@ -9,6 +9,27 @@ A step-by-step guide for adding projects, swapping images, and editing your Abou
 1. **GitHub Desktop** — download at [desktop.github.com](https://desktop.github.com)
 2. **A text editor** — TextEdit (Mac) works fine, but [Visual Studio Code](https://code.visualstudio.com) is easier because it colour-codes the file
 3. **The repo cloned to your Mac** — Rick can do this for you. It will create a folder called `project-portfolio` somewhere on your computer
+4. **Task** (optional, but makes things easier) — Rick can install this for you with one command: `brew install go-task`
+
+---
+
+## Shortcuts (once Task is installed)
+
+Open Terminal, navigate to the `project-portfolio` folder, and use these two commands:
+
+| Command | What it does |
+|---|---|
+| `task run` | Opens a live preview of the site in your browser. Press Ctrl+C to stop. |
+| `task copy NAME=my-project-name` | Creates a new project folder from the template and opens it in Finder. |
+
+**Example:**
+```
+task copy NAME=coastal-hotel-rebrand
+```
+This creates `content/work/coastal-hotel-rebrand/`, pre-filled with the template, and pops the folder open in Finder ready for you to drop images in.
+
+> **Tip:** Replace spaces with hyphens in the name, and use lowercase only.
+> `coastal-hotel-rebrand` ✅ — `Coastal Hotel Rebrand` ❌
 
 ---
 
@@ -26,24 +47,20 @@ If you forget to fetch first and someone else made a change, GitHub Desktop will
 
 ## Adding a new project
 
-### 1. Find the work folder on your Mac
+### 1. Create the project folder
 
-Open Finder, navigate to the `project-portfolio` folder, then go into:
-
+**With Task (fast):** In Terminal, run:
 ```
-content → work
+task copy NAME=my-project-name
 ```
+This creates the folder with the template already inside and opens it in Finder. Skip to step 2.
 
-You'll see one folder per project (e.g. `brand-identity`, `packaging-design`).
+**Without Task (manual):** Open Finder, go to `content → work`, and create a new folder by hand. Use lowercase letters and hyphens only — no spaces, no capital letters.
+✅ `coastal-hotel-rebrand` — ❌ `Coastal Hotel Rebrand`
 
-### 2. Create a new folder for your project
+Then copy the file `archetypes/work/index.md` into your new folder.
 
-Inside `content/work/`, create a new folder. Use lowercase letters and hyphens only — no spaces, no capital letters.
-
-✅ Good: `coastal-hotel-rebrand`
-❌ Bad: `Coastal Hotel Rebrand`, `coastal hotel rebrand`
-
-### 3. Prepare your images
+### 2. Prepare your images
 
 Before copying anything in, rename your images like this:
 
@@ -62,11 +79,9 @@ Before copying anything in, rename your images like this:
 
 Copy all your renamed images into your new project folder.
 
-### 4. Create the project info file
+### 3. Fill in the project info file
 
-Copy the file `index.md` from the `archetypes/work/` folder into your new project folder. This is the blank template — it has all the fields ready to fill in with no old content to accidentally leave behind.
-
-Open it in your text editor. It will look like this:
+Open `index.md` (already in your project folder) in your text editor. It will look like this:
 
 ```
 +++
@@ -111,7 +126,7 @@ Edit each field:
 
 If a project is not flagship, you can delete the `challenge` and `solution` lines entirely.
 
-### 5. Your folder should look like this
+### 4. Your folder should look like this
 
 ```
 content/work/coastal-hotel-rebrand/
@@ -122,7 +137,7 @@ content/work/coastal-hotel-rebrand/
   gallery-3.jpg
 ```
 
-### 6. Publish it
+### 5. Publish it
 
 Open GitHub Desktop. You'll see your new files listed on the left.
 
@@ -177,6 +192,12 @@ Paste your profile URLs between the quotes. Leave a field as `""` (empty) if you
 ## Changing the order projects appear
 
 Projects are sorted by `date` — newest first. To move a project up or down on the grid, change its `date` in the `index.md` file.
+
+---
+
+## Preview before publishing
+
+Run `task run` in Terminal. A browser window will open showing the site exactly as it will look when live, including any unpublished drafts. Press Ctrl+C when you're done.
 
 ---
 

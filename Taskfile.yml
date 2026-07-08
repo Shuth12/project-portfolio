@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  run:
+    desc: Start a local preview of the site including unpublished drafts. Press Ctrl+C to stop.
+    cmds:
+      - hugo server -D -O
+
+  copy:
+    desc: "Scaffold a new project folder from the template. Usage: task copy NAME=my-project-name"
+    requires:
+      vars: [NAME]
+    cmds:
+      - hugo new work/{{.NAME}}/
+      - open content/work/{{.NAME}}/
