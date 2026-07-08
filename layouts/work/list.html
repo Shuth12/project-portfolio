@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="container">
+  <section class="work-section">
+    <h1 class="page-title">Work</h1>
+    <div class="work-grid">
+      {{ range .Pages }}
+      <a href="{{ .Permalink }}" class="work-card">
+        {{ with .Params.cover }}
+          <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+        {{ end }}
+        <h2 class="work-card-title">{{ .Title }}</h2>
+      </a>
+      {{ else }}
+      <p style="color: var(--color-text-muted); font-family: var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; font-size: var(--text-sm);">
+        Projects coming soon.
+      </p>
+      {{ end }}
+    </div>
+  </section>
+</div>
+{{ end }}
