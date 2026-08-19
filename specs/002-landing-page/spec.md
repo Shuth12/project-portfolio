@@ -4,7 +4,7 @@
 
 **Created**: 2026-08-18
 
-**Status**: Draft
+**Status**: Complete (implemented, refined, and committed to `development` 2026-08-19; resume PDF and Work/Contact/Services destinations remain open per Assumptions, deferred to future specs)
 
 **Input**: User description: "Lets start with the landing page use @assets/page_mockups/ShelleyCerny_WebsiteAbout.jpg as a reference please ask questions where needed"
 
