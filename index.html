@@ -3,13 +3,81 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shelley Cerny — Graphic Design</title>
+    <title>Shelley Cerny — Graphic Design Portfolio</title>
+    <meta
+      name="description"
+      content="Shelley Cerny is a graphic designer with a growing focus on UX/UI design, blending print, digital, and product design experience."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
+    <header class="site-header">
+      <nav class="site-nav site-nav--primary" aria-label="Primary">
+        <ul>
+          <li><a href="#bio">About</a></li>
+          <li><a href="work.html">Work</a></li>
+        </ul>
+      </nav>
+
+      <a class="site-logo" href="#bio">
+        <img src="assets/images/logo/ShelleyCerny-Logo.png" alt="Shelley Cerny" />
+      </a>
+
+      <nav class="site-nav site-nav--secondary" aria-label="Secondary">
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Services</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="wave-divider" aria-hidden="true"></div>
+
     <main>
-      <h1>Shelley Cerny — Graphic Design</h1>
-      <p>This site is under construction. Please check back soon.</p>
+      <section id="bio" class="hero">
+        <div class="hero-visual">
+          <div class="hero-visual-backdrop" aria-hidden="true"></div>
+          <img
+            class="hero-photo"
+            src="assets/images/ShelleyCerny_Photo01.png"
+            alt="Shelley Cerny smiling, holding a laptop"
+          />
+        </div>
+
+        <div class="hero-card">
+          <h1>Hi I'm Shelley,</h1>
+          <p>
+            a graphic designer with roots in both print and digital design
+            who recently fell head first into the world of UX/UI and
+            honestly never looked back. I taught myself Figma, dove deep
+            into UX principles, and have been building out a portfolio that
+            reflects both sides of my design brain — the side that obsesses
+            over kerning and the side that can't stop thinking about user
+            flows. My background in graphic design means I bring a
+            seriously sharp design eye to every digital experience I
+            create. When I'm not pushing pixels you can find me logging
+            miles on a run or crocheting something green, because yes,
+            green is my favorite color and I will design a whole color
+            palette around it without a single apology. I'm actively
+            looking for a remote UX/UI design role where I can bring both
+            my visual design chops and my UX thinking to a team that loves
+            great design as much as I do.
+          </p>
+          <a class="button button--resume" href="assets/resume/ShelleyCerny-Resume.pdf">
+            Download My Resume
+          </a>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <p>Designed by: Shelley Cerny</p>
+    </footer>
   </body>
 </html>
