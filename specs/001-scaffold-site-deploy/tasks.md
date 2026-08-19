@@ -59,7 +59,7 @@ Single static site at the repository root (see `plan.md` Project Structure): `in
 - [X] T006 [US1] Add a build job to `.github/workflows/deploy.yml` using `actions/checkout@v4` followed by `actions/configure-pages@v5`
 - [X] T007 [US1] Add an `actions/upload-pages-artifact@v3` step to the build job in `.github/workflows/deploy.yml` uploading the repository root (`.`) as the Pages artifact
 - [X] T008 [US1] Add a deploy job to `.github/workflows/deploy.yml` using `actions/deploy-pages@v4`, with `needs: build` and `environment: name: github-pages`
-- [ ] T009 [US1] Run `specs/001-scaffold-site-deploy/quickstart.md` steps 3–4 to verify a merge to `main` triggers an automatic deploy and the live URL serves the current page within the expected time — **PENDING: requires pushing to `main` on GitHub, needs user go-ahead**
+- [X] T009 [US1] Run `specs/001-scaffold-site-deploy/quickstart.md` steps 3–4 to verify a merge to `main` triggers an automatic deploy and the live URL serves the current page within the expected time — verified: run 32204097598 completed in ~20s, https://shuth12.github.io/project-portfolio/ serves the current page
 
 **Checkpoint**: At this point, User Story 1 should be fully functional — merges to `main` deploy automatically.
 
@@ -90,7 +90,7 @@ Single static site at the repository root (see `plan.md` Project Structure): `in
 ### Implementation for User Story 3
 
 - [X] T013 [US3] Confirm the `push:` trigger added in `.github/workflows/deploy.yml` (T005) lists only `main` under `branches:`, with no other branch names present
-- [ ] T014 [US3] Run `specs/001-scaffold-site-deploy/quickstart.md` step 2 to verify a push to `development` triggers no workflow run — **PENDING: requires pushing to `development` on GitHub, needs user go-ahead**
+- [X] T014 [US3] Run `specs/001-scaffold-site-deploy/quickstart.md` step 2 to verify a push to `development` triggers no workflow run — verified: `git push -u origin development` produced no new Actions run
 
 **Checkpoint**: All three user stories are now independently verified.
 
@@ -100,7 +100,7 @@ Single static site at the repository root (see `plan.md` Project Structure): `in
 
 **Purpose**: Validate the edge cases that span all user stories
 
-- [ ] T015 Run `specs/001-scaffold-site-deploy/quickstart.md` step 5 to verify a failed deploy run is visible as a failed run in the Actions tab, the previously-deployed page stays live and unchanged, and a manual re-run succeeds without a new commit — **PENDING: requires pushing to `main` on GitHub, needs user go-ahead**
+- [X] T015 Run `specs/001-scaffold-site-deploy/quickstart.md` step 5 to verify a failed deploy run is visible as a failed run in the Actions tab, the previously-deployed page stays live and unchanged, and a manual re-run succeeds without a new commit — verified: run 32204195912 failed visibly (bad action version), site stayed at 200 throughout, revert (c1bd7e8) redeployed successfully, and `gh workflow run` (run 32204265327, trigger `workflow_dispatch`) succeeded with no new commit
 
 ---
 
