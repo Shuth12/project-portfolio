@@ -26,9 +26,10 @@ Future work that supplies real files MUST use these exact paths so
 
 | Asset | Path | Fulfilled by |
 |---|---|---|
-| Headshot photo | `assets/images/profile/ShelleyCerny-Headshot.jpg` | Designer supplies file; no code change needed once added |
-| Logo | `assets/images/logo/ShelleyCerny-Logo.svg` | Designer supplies file; no code change needed once added |
-| Resume PDF | `assets/resume/ShelleyCerny-Resume.pdf` | Designer supplies file; no code change needed once added |
+| Headshot photo | ~~`assets/images/profile/ShelleyCerny-Headshot.jpg`~~ → `assets/images/ShelleyCerny_Photo01.png` | Fulfilled 2026-08-19 |
+| Logo | ~~`assets/images/logo/ShelleyCerny-Logo.svg`~~ → `assets/images/logo/ShelleyCerny-Logo.png` | Fulfilled 2026-08-19 |
+| Resume PDF | `assets/resume/ShelleyCerny-Resume.pdf` | Still outstanding — designer supplies file; no code change needed once added |
+| Hero backdrop pattern | `assets/images/ShelleyCerny_Pattern01.png` | New asset added 2026-08-19, not in the original placeholder set — replaces the solid `--color-accent-yellow` fill |
 
 ## Shared design tokens contract
 
@@ -44,8 +45,8 @@ Colors and fonts established in `research.md` are expected to be reused
 | `--color-text-body` | `#0C0B09` |
 | `--color-cta-purple` | `#9C8BBF` |
 | `--color-text-on-dark` | `#FFFFFF` |
-| Display font | Space Mono, 700 |
-| Body font | Inter, 400/500 |
+| Display font | ~~Space Mono, 700~~ → Barlow Condensed, 700 (superseded 2026-08-19) |
+| Body font | ~~Inter, 400/500~~ → Barlow Condensed, 400/500 (superseded 2026-08-19; site now uses one family site-wide) |
 
 Future specs SHOULD define these as CSS custom properties in
 `assets/css/styles.css` (rather than repeating raw hex values) the first

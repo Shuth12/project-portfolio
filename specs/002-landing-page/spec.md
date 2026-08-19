@@ -118,3 +118,57 @@ A visitor who has read the bio wants to see Shelley's work, get in touch, or exp
 - The hand-lettered "Shelley Cerny" logo has not yet been supplied as a usable web asset; the header references a placeholder image path until the real logo file is added.
 - No licensed font files are being supplied for this spec; free/open web fonts (e.g. Google Fonts) will be chosen to closely approximate the mockup's bold block heading/nav typography.
 - Where the mockup's exact colors produce borderline accessibility contrast, design fidelity takes precedence over the constitution's general contrast guidance for this spec; such pairings are an accepted tradeoff, not a flagged deviation.
+
+## Post-Implementation Refinements (2026-08-19)
+
+After the initial implementation (T001–T021) shipped, Shelley reviewed the live
+page and directed several rounds of live visual refinement that intentionally
+diverge from `research.md`'s original pixel-sampled typography/asset decisions
+and from a literal reading of SC-004. These were explicit, iterative design
+calls from the designer herself — not scope creep — so design authority
+(constitution Principle II) sits with her, and this section records what
+changed and why, superseding the now-outdated specifics in `research.md`'s
+Typography section:
+
+- **Typography**: Superseded the original Baloo 2 → Space Mono decision.
+  Final site-wide typeface is **Barlow Condensed** (weights 400/500/700),
+  used for both `--font-display` and `--font-body`, per Shelley's direct
+  request to unify the whole site on one font family.
+- **Header/nav layout**: The header was rebuilt from an edge-justified
+  3-column grid (nav flush to the page's outer edges) to a centered flex
+  row, after visual comparison showed the mockup's nav clusters sit close
+  to the logo rather than pinned to the container edges. This was a
+  fidelity correction, not a new design direction.
+- **Divider element**: Replaced the originally-planned scalloped divider
+  (repeating semicircle bumps, matching the mockup literally) with a
+  custom tiled sine-wave divider (SVG data-URI background, tight ~32px
+  period, sage-green `#5d8c6a` stroke) per Shelley's explicit request to
+  move away from the scallop toward a "subtle wave." This is a deliberate
+  departure from the mockup's actual divider art, approved live.
+- **Hero photo/backdrop composition**: Iteratively re-tuned across several
+  rounds (vertical "cascade" positioning, corner-anchor alignment between
+  the backdrop's bottom-right corner and the bio card's top-left corner,
+  a 50% size reduction followed by a 25% size increase) until Shelley
+  confirmed the placement and scale were correct. Current values are
+  tuned by eye against the live render, not derived from the mockup's
+  pixel geometry.
+- **Real image assets supplied**: `assets/images/ShelleyCerny_Photo01.png`
+  (headshot) and `assets/images/ShelleyCerny_Pattern01.png` (a wavy
+  vertical-stripe pattern) replace the FR-002/FR-001 placeholder image
+  paths. Notably, the hero backdrop is now a **patterned image**
+  (`background-image`, not a flat `--color-accent-yellow` fill) — this
+  supersedes FR-006's "mustard-yellow accent shapes" description and the
+  solid-backdrop assumption in `research.md`.
+- **Footer accent**: Added a 3px sage-green top border to the footer,
+  matching the wave divider's stroke color/weight — a small decorative
+  addition not present in the original mockup or plan.
+- **Logo bug fixes**: Fixed a case-sensitivity mismatch between the logo
+  `<img src>` and the actual filename on disk (would have 404'd on
+  GitHub Pages' case-sensitive filesystem, invisible on macOS's
+  case-insensitive one) and cropped ~10% of unintended transparent
+  padding baked into the supplied logo PNG so it renders at its intended
+  size. Logo remains an image asset per FR-001.
+
+The resume file and the Work/Contact/Services nav placeholders (FR-011–
+FR-014) are unaffected by this round of refinement and remain open per
+the original Assumptions above.

@@ -14,7 +14,7 @@ Inline text/markup in `index.html`. No separate content file or CMS.
 |---|---|---|
 | Name | Text | "Shelley" (heading: "Hi I'm Shelley,") |
 | Bio paragraph | Text (rich text not required — plain paragraph) | Background, design focus, role sought; matches mockup tone (spec FR-003) |
-| Headshot photo | Image reference | Placeholder path `assets/images/profile/ShelleyCerny-Headshot.jpg`; not yet supplied (spec FR-002) |
+| Headshot photo | Image reference | `assets/images/ShelleyCerny_Photo01.png` — real asset, supplied 2026-08-19 (supersedes the original placeholder path; spec FR-002) |
 
 ## Resume File
 
@@ -41,4 +41,12 @@ admin/editing mechanism — changing a link means editing `index.html`.
 
 | Field | Type | Notes |
 |---|---|---|
-| Logo image | Image reference | Placeholder path `assets/images/logo/ShelleyCerny-Logo.svg`; not yet supplied (spec FR-001) |
+| Logo image | Image reference | `assets/images/logo/ShelleyCerny-Logo.png` — real asset, supplied 2026-08-19 (supersedes the original placeholder path; spec FR-001) |
+
+## Hero Backdrop
+
+Added post-implementation; not part of the original spec's Key Entities.
+
+| Field | Type | Notes |
+|---|---|---|
+| Backdrop pattern | Image reference | `assets/images/ShelleyCerny_Pattern01.png` — a wavy vertical-stripe pattern, supplied 2026-08-19, rendered as `.hero-visual-backdrop`'s `background-image`. Replaces the original solid `--color-accent-yellow` fill described in FR-006. |

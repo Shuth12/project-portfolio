@@ -7,8 +7,8 @@
   --color-cta-purple: #9c8bbf;
   --color-text-on-dark: #ffffff;
 
-  --font-display: "Space Mono", "Courier New", monospace;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Barlow Condensed", "Segoe UI", sans-serif;
+  --font-body: "Barlow Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 * {
@@ -34,16 +34,17 @@ a {
 /* Header / nav */
 
 .site-header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1.5rem 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+  padding: 0.875rem 2rem;
   background-color: var(--color-background);
 }
 
 .site-logo img {
-  height: 3rem;
+  height: 4.75rem;
   width: auto;
 }
 
@@ -51,17 +52,9 @@ a {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 2rem;
   margin: 0;
   padding: 0;
-}
-
-.site-nav--primary {
-  justify-self: start;
-}
-
-.site-nav--secondary {
-  justify-self: end;
 }
 
 .site-nav a {
@@ -79,24 +72,17 @@ a {
   text-decoration: underline;
 }
 
-/* Subtle wave divider between header and hero panel */
+/* Tight, tiled wave divider between header and hero panel */
 
-.scallop {
-  position: relative;
-  height: 2.25rem;
+.wave-divider {
+  height: 4rem;
+  width: 100%;
   background-color: var(--color-background);
-  overflow: hidden;
-}
-
-.scallop::after {
-  content: "";
-  position: absolute;
-  left: -10%;
-  right: -10%;
-  top: 1.1rem;
-  height: 6rem;
-  border-radius: 50%;
-  background-color: var(--color-panel-teal);
+  background-repeat: repeat-x;
+  /* tile's viewBox is drawn 1:1 with this size, so it renders undistorted —
+     keep both numbers in sync if you change either one */
+  background-size: 32px 4rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 64' preserveAspectRatio='none'%3E%3Cpath d='M0,32 C5,28 11,28 16,32 C21,36 27,36 32,32 L32,64 L0,64 Z' fill='%231f7a8c'/%3E%3Cpath d='M0,32 C5,28 11,28 16,32 C21,36 27,36 32,32' fill='none' stroke='%235d8c6a' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
 /* Hero / bio */
@@ -110,7 +96,7 @@ main {
   max-width: 75rem;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.84fr);
   gap: 0;
   align-items: start;
   scroll-margin-top: 6rem;
@@ -119,9 +105,8 @@ main {
 .hero-visual {
   position: relative;
   z-index: 2;
-  /* pull right so the photo + backdrop overlap the card's top-left corner */
-  margin-right: -4.5rem;
-  padding-top: 0.5rem;
+  /* pull right so the photo + backdrop cascade down and overlap the card's top-left corner */
+  margin-right: -1.875rem;
 }
 
 .hero-photo {
@@ -135,13 +120,15 @@ main {
   box-shadow: 0 1.5rem 2.5rem -1.25rem rgba(12, 11, 9, 0.45);
 }
 
-/* solid yellow backdrop offset behind the photo */
+/* patterned backdrop offset behind the photo */
 .hero-visual-backdrop {
   position: absolute;
   inset: 0;
-  background-color: var(--color-accent-yellow);
+  background-image: url("../images/ShelleyCerny_Pattern01.png");
+  background-size: cover;
+  background-position: center;
   border-radius: 1.5rem;
-  transform: translate(3rem, 2.5rem);
+  transform: translate(1.875rem, 1.5625rem);
   z-index: 1;
 }
 
@@ -150,7 +137,12 @@ main {
   z-index: 1;
   background-color: var(--color-background);
   border-radius: 1.5rem;
-  padding: 3rem 3rem 3rem 9.5rem;
+  /* pushed down so the photo+backdrop cascade from above and only the backdrop's
+     bottom-right corner anchors onto the card's top-left corner */
+  margin-top: 18.75rem;
+  /* left padding must clear the backdrop's full reach: hero-visual's -1.875rem margin
+     plus the backdrop's own 1.875rem translate = 3.75rem, plus a little breathing room */
+  padding: 3rem 3rem 3rem 4rem;
 }
 
 .hero-card h1 {
@@ -196,6 +188,8 @@ main {
 
 .site-footer {
   background-color: var(--color-accent-yellow);
+  /* matches the wave divider's stroke: same color, same 3px weight */
+  border-top: 3px solid var(--color-text-green);
   padding: 1.25rem 2rem;
   text-align: center;
 }
@@ -214,29 +208,27 @@ main {
 
 @media (max-width: 64rem) {
   .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2.52fr);
   }
 
   .hero-visual {
-    margin-right: -3rem;
+    margin-right: -1.40625rem;
   }
 
   .hero-card {
-    padding: 2rem 2rem 2rem 7.5rem;
+    /* same corner-anchor logic as the base rule, scaled to this breakpoint's
+       narrower column width */
+    margin-top: 16.25rem;
+    /* clears -1.40625rem margin + 1.875rem backdrop translate = 3.28rem, plus buffer */
+    padding: 2rem 2rem 2rem 3.5rem;
   }
 }
 
 @media (max-width: 48rem) {
   .site-header {
-    grid-template-columns: 1fr;
-    justify-items: center;
+    flex-direction: column;
     text-align: center;
     gap: 0.75rem;
-  }
-
-  .site-nav--primary,
-  .site-nav--secondary {
-    justify-self: center;
   }
 
   .site-nav ul {
@@ -260,6 +252,7 @@ main {
   }
 
   .hero-card {
+    margin-top: 0;
     padding: 5.5rem 1.75rem 1.75rem;
   }
 
@@ -270,7 +263,7 @@ main {
 
 @media (max-width: 23.5rem) {
   .site-header {
-    padding: 1.25rem 1rem;
+    padding: 0.75rem 1rem;
   }
 
   .site-nav ul {

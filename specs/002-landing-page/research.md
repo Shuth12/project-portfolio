@@ -4,6 +4,13 @@ All Technical Context items were resolvable from the spec, the constitution,
 and direct inspection of the reference mockup — no items needed to remain
 as `NEEDS CLARIFICATION` going into Phase 1.
 
+> **Superseded 2026-08-19**: The Typography and hero-backdrop decisions
+> below reflect the original Phase 0 research only. Shelley directed
+> further live changes after implementation (final font is Barlow
+> Condensed; the hero backdrop is now a patterned image, not a solid
+> fill) — see `spec.md`'s "Post-Implementation Refinements" section for
+> the current, authoritative decisions.
+
 ## Color palette
 
 **Decision**: Use hex values sampled directly from
