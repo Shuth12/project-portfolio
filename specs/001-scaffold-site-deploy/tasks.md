@@ -40,7 +40,7 @@ Single static site at the repository root (see `plan.md` Project Structure): `in
 
 **⚠️ CRITICAL**: No user story work can be verified live until this phase is complete
 
-- [ ] T003 Enable GitHub Pages with **Source = "GitHub Actions"** in the repository's Settings → Pages (manual, one-time repository setting; steps in `specs/001-scaffold-site-deploy/quickstart.md` Prerequisites) — required before US1/US3 live-deploy verification can pass — **PENDING: requires user action in GitHub repo settings**
+- [X] T003 Enable GitHub Pages with **Source = "GitHub Actions"** in the repository's Settings → Pages (manual, one-time repository setting; steps in `specs/001-scaffold-site-deploy/quickstart.md` Prerequisites) — already configured from the repo's prior Hugo-based Pages deployment; confirmed by user
 - [X] T004 [P] Create a minimal `index.html` scaffold at the repository root with `<!DOCTYPE html>`, `<html lang="en">`, and a `<head>` containing a real `<title>` (empty `<body>` for now) — gives US1 something deployable and gives US2 a file to fill in
 
 **Checkpoint**: Foundation ready — user story implementation can now begin
