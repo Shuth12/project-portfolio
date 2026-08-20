@@ -52,7 +52,7 @@ a {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 2.75rem;
   margin: 0;
   padding: 0;
 }
@@ -61,7 +61,7 @@ a {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.85rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-text-green);
@@ -89,14 +89,14 @@ a {
 
 main {
   background-color: var(--color-panel-teal);
-  padding: 3rem 2rem 4rem;
+  padding: 4rem 3rem 5rem;
 }
 
 .hero {
   max-width: 75rem;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2.84fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: 0;
   align-items: start;
   scroll-margin-top: 6rem;
@@ -106,7 +106,7 @@ main {
   position: relative;
   z-index: 2;
   /* pull right so the photo + backdrop cascade down and overlap the card's top-left corner */
-  margin-right: -1.875rem;
+  margin-right: -0.9375rem;
 }
 
 .hero-photo {
@@ -128,7 +128,7 @@ main {
   background-size: cover;
   background-position: center;
   border-radius: 1.5rem;
-  transform: translate(1.875rem, 1.5625rem);
+  transform: translate(2.5rem, 2.1875rem);
   z-index: 1;
 }
 
@@ -142,7 +142,7 @@ main {
   margin-top: 18.75rem;
   /* left padding must clear the backdrop's full reach: hero-visual's -1.875rem margin
      plus the backdrop's own 1.875rem translate = 3.75rem, plus a little breathing room */
-  padding: 3rem 3rem 3rem 4rem;
+  padding: 4rem 5rem 4rem 5rem;
 }
 
 .hero-card h1 {
@@ -158,6 +158,7 @@ main {
 .hero-card p {
   font-size: 1rem;
   line-height: 1.6;
+  letter-spacing: 0.01em;
   color: var(--color-text-body);
   margin: 0 0 2rem;
 }
@@ -208,11 +209,11 @@ main {
 
 @media (max-width: 64rem) {
   .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2.52fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
   }
 
   .hero-visual {
-    margin-right: -1.40625rem;
+    margin-right: -0.703125rem;
   }
 
   .hero-card {
@@ -220,7 +221,7 @@ main {
        narrower column width */
     margin-top: 16.25rem;
     /* clears -1.40625rem margin + 1.875rem backdrop translate = 3.28rem, plus buffer */
-    padding: 2rem 2rem 2rem 3.5rem;
+    padding: 2.75rem 3.4375rem 2.75rem 4.25rem;
   }
 }
 
@@ -236,7 +237,7 @@ main {
   }
 
   main {
-    padding: 2rem 1.25rem 3rem;
+    padding: 2.5rem 1.75rem 3.5rem;
   }
 
   .hero {
@@ -253,7 +254,7 @@ main {
 
   .hero-card {
     margin-top: 0;
-    padding: 5.5rem 1.75rem 1.75rem;
+    padding: 6rem 2.25rem 2.25rem;
   }
 
   .hero-card h1 {
@@ -267,10 +268,10 @@ main {
   }
 
   .site-nav ul {
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .hero-card {
-    padding: 5rem 1.25rem 1.25rem;
+    padding: 5.5rem 1.75rem 1.75rem;
   }
 }
