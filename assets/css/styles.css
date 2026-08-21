@@ -4,6 +4,7 @@
   --color-accent-yellow: #e8b601;
   --color-text-green: #5d8c6a;
   --color-text-body: #0c0b09;
+  --color-text-body-rgb: 12, 11, 9;
   --color-cta-purple: #9c8bbf;
   --color-text-on-dark: #ffffff;
 
@@ -205,6 +206,245 @@ main {
   color: var(--color-text-on-dark);
 }
 
+/* Work gallery grid */
+
+.work-main {
+  padding: 3rem;
+}
+
+.work-grid {
+  max-width: 75rem;
+  margin: 0 auto;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  padding: 4rem;
+  background-color: var(--color-background);
+  border-radius: 1.5rem;
+}
+
+.work-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.work-tile {
+  display: block;
+  position: relative;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.work-tile img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
+/* Square-cropped tiles pair with the taller default tile above/below them in
+   the same .work-column so each column's total stack height matches its
+   neighbors, keeping the grid's top and bottom edges flush */
+.work-tile--square img {
+  aspect-ratio: 1 / 1;
+}
+
+/* Anchors the image's bottom edge so the square crop only trims off the
+   top of the source image instead of cropping evenly from both sides */
+.work-tile-img--crop-top {
+  object-position: bottom;
+}
+
+.work-tile-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-on-dark);
+  background-color: rgba(var(--color-text-body-rgb), 0.5);
+  opacity: 0;
+}
+
+.work-tile:hover .work-tile-title,
+.work-tile:focus-visible .work-tile-title {
+  opacity: 1;
+}
+
+/* Project detail page */
+
+.project-detail {
+  max-width: 75rem;
+  margin: 0 auto;
+  background-color: var(--color-background);
+  border-radius: 1.5rem;
+  padding: 3rem;
+}
+
+.back-to-work {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-green);
+  margin-bottom: 1.5rem;
+}
+
+.back-to-work:hover,
+.back-to-work:focus-visible {
+  text-decoration: underline;
+}
+
+.project-detail h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text-green);
+  font-size: 2.25rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0 0 2rem;
+}
+
+/* Featured project header treatment (larger centered title + subtitle +
+   intro copy), opted into per-page via .project-title/.project-subtitle/
+   .project-body rather than changing the shared .project-detail h1 rule */
+.project-detail h1.project-title {
+  text-align: center;
+  font-size: 3rem;
+  letter-spacing: 0.12em;
+}
+
+.project-subtitle {
+  margin: 0 0 2rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-text-body);
+}
+
+.project-body {
+  margin: 0 0 2.5rem;
+  text-indent: 2em;
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--color-text-body);
+}
+
+.project-footer-cta {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.project-detail-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.project-detail-images--stacked {
+  grid-template-columns: 1fr;
+}
+
+.project-detail-images img {
+  width: 100%;
+  border-radius: 0.25rem;
+}
+
+.project-image--full {
+  grid-column: 1 / -1;
+}
+
+/* Numbered card grid: 3 per row, wrapping via flex so a leftover partial
+   row (e.g. the last 2 of 5) centers itself automatically */
+.project-timeline {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 2.5rem;
+  row-gap: 2rem;
+}
+
+.project-timeline-item {
+  flex: 0 1 21rem;
+}
+
+.project-timeline-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+
+.project-timeline-number {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: var(--color-accent-yellow);
+  color: var(--color-text-on-dark);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.project-timeline-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-text-body);
+}
+
+.project-timeline-body {
+  /* indent to align under the title text, past the number "bullet" and its gap */
+  margin: 0;
+  padding-left: calc(2.25rem + 1.25rem);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--color-text-body);
+}
+
+/* Row of two images that together fill the full row width (matching the
+   text/full-width image below) while landing on a shared height with no
+   cropping — each image's flex-grow (set inline per image) equals its own
+   natural aspect ratio, so flex distributes width proportionally and the
+   aspect-ratio property (also set inline per image) derives a matching
+   height from that width automatically */
+.project-image-row {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.project-image-row img.project-image--scaled {
+  flex-basis: 0;
+  min-width: 0;
+  height: auto;
+}
+
 /* Responsive breakpoints */
 
 @media (max-width: 64rem) {
@@ -222,6 +462,11 @@ main {
     margin-top: 16.25rem;
     /* clears -1.40625rem margin + 1.875rem backdrop translate = 3.28rem, plus buffer */
     padding: 2.75rem 3.4375rem 2.75rem 4.25rem;
+  }
+
+  .work-grid {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 3rem;
   }
 }
 
@@ -260,6 +505,34 @@ main {
   .hero-card h1 {
     font-size: 1.75rem;
   }
+
+  .work-main {
+    padding: 1.75rem;
+  }
+
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 2rem;
+  }
+
+  .project-detail {
+    padding: 1.75rem;
+  }
+
+  .project-detail-images {
+    grid-template-columns: 1fr;
+  }
+
+  .project-image-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-image-row img.project-image--scaled {
+    width: 100%;
+    height: auto;
+  }
 }
 
 @media (max-width: 23.5rem) {
@@ -273,5 +546,10 @@ main {
 
   .hero-card {
     padding: 5.5rem 1.75rem 1.75rem;
+  }
+
+  .work-grid {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
   }
 }
