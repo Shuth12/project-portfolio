@@ -1,6 +1,6 @@
 <!--
 Sync Impact Report
-- Version change: (unratified template) → 1.0.0 → 1.1.0
+- Version change: (unratified template) → 1.0.0 → 1.1.0 → 2.0.0
 - v1.0.0: initial ratification. Added principles:
   - I. Static-Only, No Backend (NON-NEGOTIABLE)
   - II. Design Fidelity
@@ -15,7 +15,13 @@ Sync Impact Report
   client's animated logo GIF), displayed as-provided and never used for site
   chrome/UI. Prompted by an animated asset (assets/images/bouncy/
   Bouncy_Logo_Bounce.gif) that is portfolio content, not a site effect.
-- Removed sections: none
+- v2.0.0: redefined the branching/merge strategy in Development Workflow
+  (backward-incompatible governance change) — replaced the `development`
+  integration branch with trunk-based development: feature branches now
+  branch from `main` at the start of `/speckit-specify` and merge directly
+  back into `main` once the user confirms the spec's work is complete. The
+  `development` branch is no longer used or referenced.
+- Removed sections: none (Development Workflow content revised in place)
 - Templates requiring updates: none — dependent templates/commands read this
   constitution at runtime and are out of scope for this command
 - Deferred placeholders / TODOs: none — all values derived from docs/PRD.md
@@ -109,15 +115,15 @@ updating `docs/PRD.md` and amending this constitution:
 ## Development Workflow
 
 - All commits MUST follow the Conventional Commits format.
-- Each spec/feature MUST be developed on its own branch, branched from
-  `development`.
-- `development` is the integration branch; `main` is the deployment branch.
-  Work MUST NOT be committed directly to `main` outside of a
-  `development` → `main` merge.
+- The project follows trunk-based development: `main` is the single trunk
+  and deployment branch. No intermediate integration branch (e.g. a
+  `development` branch) is used.
+- Each spec/feature MUST be developed on its own branch, created from
+  `main` at the start of `/speckit-specify` for that feature.
 - For larger groups of tasks within a spec, commit often at logical
   checkpoints rather than as one large commit.
-- On completion of a spec, its branch MUST be merged into `development`
-  (not directly into `main`).
+- Once the user confirms a spec's work is complete, its branch MUST be
+  merged directly into `main`.
 
 ## Governance
 
@@ -136,4 +142,4 @@ principle or governance rule; MINOR = a new principle added or existing
 guidance materially expanded; PATCH = clarifications or wording fixes with no
 semantic change.
 
-**Version**: 1.1.0 | **Ratified**: 2026-08-18 | **Last Amended**: 2026-08-18
+**Version**: 2.0.0 | **Ratified**: 2026-08-18 | **Last Amended**: 2026-08-20
