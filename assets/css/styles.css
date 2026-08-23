@@ -100,14 +100,13 @@ main {
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: 0;
   align-items: start;
-  scroll-margin-top: 6rem;
 }
 
 .hero-visual {
   position: relative;
   z-index: 2;
   /* pull right so the photo + backdrop cascade down and overlap the card's top-left corner */
-  margin-right: -0.9375rem;
+  margin-right: -2.75rem;
 }
 
 .hero-photo {
@@ -118,7 +117,6 @@ main {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 1.5rem;
-  box-shadow: 0 1.5rem 2.5rem -1.25rem rgba(12, 11, 9, 0.45);
 }
 
 /* patterned backdrop offset behind the photo */
@@ -129,7 +127,7 @@ main {
   background-size: cover;
   background-position: center;
   border-radius: 1.5rem;
-  transform: translate(2.5rem, 2.1875rem);
+  transform: translate(2.75rem, 2.6rem);
   z-index: 1;
 }
 
@@ -138,12 +136,15 @@ main {
   z-index: 1;
   background-color: var(--color-background);
   border-radius: 1.5rem;
-  /* pushed down so the photo+backdrop cascade from above and only the backdrop's
-     bottom-right corner anchors onto the card's top-left corner */
-  margin-top: 18.75rem;
-  /* left padding must clear the backdrop's full reach: hero-visual's -1.875rem margin
-     plus the backdrop's own 1.875rem translate = 3.75rem, plus a little breathing room */
-  padding: 4rem 5rem 4rem 5rem;
+  /* pulled up so the photo+backdrop cascade down further over the card's
+     top-left corner, giving a deeper overlap than a simple corner touch */
+  margin-top: 13rem;
+  /* left padding centers the title/body/button in the space between the
+     backdrop's right edge and the card's own right edge: backdrop reach
+     (hero-visual's -2.75rem margin + its 2.75rem translate = 5.5rem) plus
+     a gap matching the card's own 5rem right padding, so the text column
+     is inset evenly from both the image and the card's right edge */
+  padding: 4rem 5rem 4rem 10.5rem;
 }
 
 .hero-card h1 {
@@ -607,15 +608,17 @@ main {
   }
 
   .hero-visual {
-    margin-right: -0.703125rem;
+    margin-right: -1.8rem;
   }
 
   .hero-card {
-    /* same corner-anchor logic as the base rule, scaled to this breakpoint's
-       narrower column width */
-    margin-top: 16.25rem;
-    /* clears -1.40625rem margin + 1.875rem backdrop translate = 3.28rem, plus buffer */
-    padding: 2.75rem 3.4375rem 2.75rem 4.25rem;
+    /* same deeper-overlap logic as the base rule, scaled to this
+       breakpoint's narrower column width */
+    margin-top: 11.25rem;
+    /* centers the text column the same way as the base rule: backdrop
+       reach (4.55rem) plus a gap matching the card's 3.4375rem right
+       padding */
+    padding: 2.75rem 3.4375rem 2.75rem 8rem;
   }
 
   .work-grid {
@@ -648,7 +651,7 @@ main {
     max-width: 15rem;
     margin-right: 0;
     margin-left: 1.5rem;
-    margin-bottom: -2.5rem;
+    margin-bottom: -4rem;
   }
 
   .hero-card {
