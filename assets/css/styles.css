@@ -523,6 +523,82 @@ main {
   margin: -11rem -7rem -2rem 0;
 }
 
+/* Services page */
+
+/* Same box footprint/background technique as .contact-pattern, sized to
+   the blobs pattern asset instead; uniform padding (rather than
+   .contact-pattern's photo-overlap-tuned asymmetric padding) since the
+   services card has no overlapping photo */
+.services-pattern {
+  max-width: 75rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  padding: 5rem 4rem;
+  background-image: url("../images/Shelleycerny-blobs.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.services-card {
+  width: 100%;
+  background-color: var(--color-background);
+  border-radius: 1.5rem;
+  box-shadow:
+    0 2rem 3.5rem -1rem rgba(12, 11, 9, 0.6),
+    0 -0.75rem 2rem -0.75rem rgba(12, 11, 9, 0.5);
+  padding: 3rem 4rem 4rem;
+}
+
+.services-card h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text-green);
+  font-size: 2.25rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 3rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 3rem;
+  row-gap: 3.5rem;
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* without this, the grid item's default auto min-width equals its
+     content's min-content (the widest single letter-spaced/uppercase word
+     in the subtitle), which can force the whole grid — and page — wider
+     than the viewport on narrow screens */
+  min-width: 0;
+}
+
+.service-item img {
+  height: 5rem;
+  width: auto;
+  margin: 0 0 1.5rem;
+}
+
+.service-item .project-subtitle {
+  margin: 0 0 1rem;
+}
+
+.service-item .project-body {
+  margin: 0;
+  text-indent: 0;
+}
+
 /* Responsive breakpoints */
 
 @media (max-width: 64rem) {
@@ -634,6 +710,23 @@ main {
     width: 100%;
     max-width: 16rem;
     margin: 1.5rem auto 0;
+  }
+
+  .services-main {
+    padding: 1.75rem;
+  }
+
+  .services-pattern {
+    padding: 2.25rem 1.5rem;
+  }
+
+  .services-card {
+    padding: 2.25rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
   }
 }
 
